@@ -1,6 +1,3 @@
-const properties = require("./json/properties.json");
-const users = require("./json/users.json");
-
 const { Pool } = require("pg");
 
 const pool = new Pool({
@@ -52,12 +49,13 @@ const getUserWithId = function (id) {
  * @param {{name: string, password: string, email: string}} user
  * @return {Promise<{}>} A promise to the user.
  */
-const addUser = async function (user) {
-  const res = await pool.query(`
+const addUser =  function (user) {
+  return pool.query(`
   INSERT INTO users(name, email, password) values($1, $2, $3)
   RETURNING *;
-  `, [user.name, user.email, user.password]);
-  return await res.rows[0];
+  `, [user.name, user.email, user.password])
+  .then(res => res.rows[0])
+  .catch(err => console.log(err.message));
 };
 
 /// Reservations
@@ -125,7 +123,9 @@ const getAllProperties = function (options, limit = 10) {
 
   console.log(queryString, queryParams);
 
-  return pool.query(queryString, queryParams).then(res => res.rows).catch(err => console.log(err.message));
+  return pool.query(queryString, queryParams)
+    .then(res => res.rows)
+    .catch(err => console.log(err.message));
 };
 
 /**

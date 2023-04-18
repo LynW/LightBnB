@@ -9,6 +9,7 @@ Lighthouse BnB is an app that will revolutionize the travel industry. It will al
 # Screenshots
 ### Listings
 <img src="docs/listings.png">
+
 ### My Reservations
 <img src="docs/mylistings.png">
 

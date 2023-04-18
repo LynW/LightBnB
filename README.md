@@ -3,6 +3,16 @@ The purpose of this project is to design a database and use server-side JavaScri
 
 Lighthouse BnB is an app that will revolutionize the travel industry. It will allow homeowners to rent out their homes to people on vacation, creating an alternative to hotels and bed and breakfasts...There’s nothing else like it! Users can view property information, book reservations, view their reservations, and write reviews. We'll be creating the first ever application to do something like this and we will call it LighthouseBnB.
 
+# Running app
+
+Create a database called lightbnb from the psql terminal.
+
+Build the database table from `\i migrations/01_schema.sql` from the root
+
+Seed data using files from `/seeds` in psql using `\i seeds/01_seeds.sql` and `\i seeds/02_seeds.sql` from the root
+
+Run the app `npm run local` and view it at `localhost:3000`.
+
 # ERD
 <img src="docs/ERD.png">
 
